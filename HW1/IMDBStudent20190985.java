@@ -1,8 +1,10 @@
-import java.io.*;
+import java.io.IOException;
 import java.util.*;
 
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.*;
@@ -19,6 +21,7 @@ public class IMDBStudent20190985
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException
 		{
 			String[] splt = value.toString().split("::");
+			
 			StringTokenizer itr = new StringTokenizer(splt[splt.length - 1], "|");
 			
 			while (itr.hasMoreTokens()) 
@@ -62,15 +65,13 @@ public class IMDBStudent20190985
 		job.setJarByClass(IMDBStudent20190985.class);
 		job.setMapperClass(IMDBMapper.class);
 		job.setReducerClass(IMDBReducer.class);
-		
+	
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
 		
 		FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
-		
 		FileSystem.get(job.getConfiguration()).delete( new Path(otherArgs[1]), true);
-		
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	
 	}
