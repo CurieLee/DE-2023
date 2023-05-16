@@ -60,7 +60,7 @@ public class IMDBStudent20190985
 			System.exit(2);
 		}
 		
-		Job job = new Job(conf, "IMDBStudent20190985");
+		Job job = new Job(conf, "IMDB");
 		
 		job.setJarByClass(IMDBStudent20190985.class);
 		job.setMapperClass(IMDBMapper.class);
