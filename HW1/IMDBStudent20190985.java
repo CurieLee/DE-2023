@@ -11,8 +11,8 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 public class IMDBStudent20190985
 {
-    public static class IMDBMapper extends Mapper<Object, Text, Text, IntWritable>
-    {
+    	public static class IMDBMapper extends Mapper<Object, Text, Text, IntWritable>
+    	{
 		private final static IntWritable one = new IntWritable(1);
 		private Text genre = new Text();
 		
