@@ -14,13 +14,13 @@ public final class IMDBStudent20190985 implements Serializable
 		
 		if (args.length < 2) 
         {
-			System.err.println("Usage: IMDBStudent20190985 <in-file> <out-file>");
+			System.err.println("Usage: IMDB <in-file> <out-file>");
 			System.exit(1);
 		}
 		
 		SparkSession spark = SparkSession
 			.builder()
-			.appName("IMDBStudent20190992")
+			.appName("IMDBStudent20190985")
 			.getOrCreate();
 		
 		JavaRDD<String> lines = spark.read().textFile(args[0]).javaRDD();
